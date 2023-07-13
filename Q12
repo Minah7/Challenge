@@ -1,0 +1,18 @@
+// 1 ≤ overwrite_string의 길이 ≤ my_string의 길이 ≤ 1,000
+// 0 ≤ s ≤ my_string의 길이 - overwrite_string의 길이
+
+class Solution {
+    public String solution(String my_string, String overwrite_string, int s) {
+        int o_len = overwrite_string.length();
+        int m_len = my_string.length();
+        
+        String first = my_string.substring(0, s);
+        String middle = overwrite_string;
+        String last = my_string.substring(s+o_len, m_len);
+            
+        String answer = first + middle + last;
+        return answer;
+    }
+}
+
+// 성공!!
