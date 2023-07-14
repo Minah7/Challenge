@@ -19,3 +19,25 @@ public class Solution {
 }
 
 //실패. 나중에 다시 풀어보기
+
+import java.util.Scanner;
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String a = sc.next();
+        String answer = "";
+        
+        for(int i = 0; i < a.length(); i++) {
+            char b = a.charAt(i);
+            if(Character.isUpperCase(b)) {
+                answer = answer + Character.toLowerCase(b);
+            } else {
+                answer = answer + Character.toUpperCase(b);
+            }
+        }
+        System.out.println(answer);
+    }
+}
+
+//성공!! 너무 어렵당
