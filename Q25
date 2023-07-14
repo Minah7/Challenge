@@ -1,0 +1,15 @@
+// 한 자리 정수로 이루어진 문자열 num_str이 주어질 때, 각 자리수의 합을 return하도록 solution 함수를 완성해주세요.
+
+class Solution {
+    public int solution(String num_str) {
+        int answer = 0;
+        for (int i = 0; i < num_str.length(); i++) {
+            answer = answer + Integer.parseInt(num_str.substring(i,i+1));
+        }
+        return answer;
+    }
+}
+
+//성공!
+//성공했지만 answer = answer + Integer.parseInt(num_str.substring(i,i+1)); 이 부분에서
+//num_str.substring(i,i+1) 부분을 왜 num_str[i]로 작성하면 안되는지 이해하지 못했다.
