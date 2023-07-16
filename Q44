@@ -1,0 +1,21 @@
+// 10개의 수를 입력 받아, 그 중에서 가장 큰 수를 출력하는 프로그램을 작성하라.
+// 출력의 각 줄은 '#t'로 시작하고, 공백을 한 칸 둔 다음 정답을 출력한다.
+// (t는 테스트 케이스의 번호를 의미하며 1부터 시작한다.)
+
+import java.util.Scanner;
+import java.io.FileInputStream;
+class Solution {
+	public static void main(String args[]) throws Exception	{
+		Scanner sc = new Scanner(System.in);
+		int T =sc.nextInt();
+		for(int t = 1; t <= T; t++) {
+            int max = 0;
+            for (int i =0; i < 10; i++) {
+                max = Math.max(max, sc.nextInt());
+            }
+            System.out.printf("#%d %d\n", t, max);
+		}
+	}
+}
+
+//성공.
