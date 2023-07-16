@@ -1,0 +1,23 @@
+// 하나의 자연수를 입력 받아 각 자릿수의 합을 계산하는 프로그램을 작성하라.
+
+import java.util.Scanner;
+import java.io.FileInputStream;
+class Solution {
+	public static void main(String args[]) throws Exception {
+		Scanner sc = new Scanner(System.in);
+		int N =sc.nextInt();
+        String num = String.valueOf(N);
+        int sum = 0;
+
+		for(int i =0; i <= num.length(); i++) {
+            int n = Integer.parseInt(num.substring(i,i+1));
+            sum += n;
+        }
+        System.out.println(sum);
+	}
+}
+
+// 실패. 계속 에러가 뜬다..
+//22:46:17 (Runtime error)
+//Error Message:
+//Memory error occured, (e.g. segmentation error, memory limit Exceed, stack overflow,... etc)
