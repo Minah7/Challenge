@@ -4,49 +4,41 @@ public class AppleTree {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int N = sc.nextInt();
+		int n = sc.nextInt();
 
-		int[][] ground = new int[N][N];
+		int[][] ground = new int[n][n];
 
-		for (int r = 0; r < N; r++) {
-			for (int c = 0; c < N; c++) {
+		for (int r = 0; r < n; r++) {
+			for (int c = 0; c < n; c++) {
 				ground[r][c] = sc.nextInt();
 			}
 		}
 
 		int maxN = 0;
-		int sum = 0;
+		int E = 0;
+		int W = 0;
+		int N = 0;
+		int S = 0;
 
-		for (int r = 0; r < N; r++) {
-			for (int c = 0; c < N; c++) {
-				while (c < N-1) {
-					// 동쪽
-					sum = ground[r][c] + ground[r][c + 1];
-					if (sum > maxN) {
-						maxN = sum;
-					}
+		for (int r = 0; r < n; r++) {
+			for (int c = 0; c < n; c++) {
+				if (c+1 < n) {
+					E = ground[r][c + 1];
 				}
-				while (1 <= c) {
-					// 서쪽
-					sum = ground[r][c] + ground[r][c - 1];
-					if (sum > maxN) {
-						maxN = sum;
-					}
+				if (c-1 >= 0) {
+					W = ground[r][c - 1];
 				}
-				while (1 <= r) {
-					// 북쪽
-					sum = ground[r][c] + ground[r - 1][c];
-					if (sum > maxN) {
-						maxN = sum;
-					}
+				if (r-1 >= 0) {
+					N = ground[r - 1][c];
 				}
-				while (r < N-1) {
-					// 남쪽
-					sum = ground[r][c] + ground[r + 1][c];
-					if (sum > maxN) {
-						maxN = sum;
-					}
-				} 
+				if (r+1 < n) {
+					S = ground[r + 1][c];
+				}
+				int sum = ground[r][c] + E + W + N + S;
+				if(sum > maxN) {
+					maxN = sum;
+				}
+
 			}
 		}
 		System.out.println(maxN);
