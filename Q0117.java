@@ -9,7 +9,6 @@ import java.util.*;
 class Solution {
     public String solution(String myString, int[][] queries) {
         char[] m_s = myString.toCharArray();
-        String answer = "";
         for(int s = 0; s < queries.length; s++) {
             while(queries[s][0] < queries[s][1]) {
                 char temp = m_s[queries[s][1]]; m_s[queries[s][1]] = m_s[queries[s][0]]; m_s[queries[s][0]]=temp;
