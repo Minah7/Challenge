@@ -20,3 +20,102 @@ class Solution {
         return answer;
     }
 }
+
+import java.util.*;
+
+class Solution {
+    public String solution(String myString, int[] indices) {
+        Arrays.sort(indices);
+        String answer = myString;
+        
+        for(int i = 0; i < myString.length(); i++) {
+            for(int n = 0; n < indices.length; n++) {
+                if(i == indices[n]) {
+                    answer.replace(
+                        ""+answer.charAt(i), "");
+                } 
+            }
+        }
+        return answer;
+    }
+}
+
+class Solution {
+    public String solution(String myString, int[] indices) {
+        Arrays.sort(indices);
+        String answer = myString;
+        
+        for(int i = 0; i < myString.length(); i++) {
+            for(int n = indices.length-1; n >= 0; n--) {
+                if(i == indices[n]) {
+                    answer = answer.replace(""+answer.charAt(i), "");
+                } 
+            }
+        }
+        return answer;
+    }
+}
+
+class Solution {
+    public String solution(String myString, int[] indices) {
+        Arrays.sort(indices);
+        String answer;
+        
+        for(int i = 0; i < myString.length(); i++) {
+            for(int n = indices.length-1; n >= 0; n--) {
+                if(i == indices[n]) {
+                    myString = myString.replace(""+myString.charAt(i), "");
+                } 
+            }
+        }
+        answer = myString;
+        return answer;
+    }
+}
+
+class Solution {
+    public String solution(String myString, int[] indices) {
+        Arrays.sort(indices);
+        String answer;
+        
+        for(int i = myString.length()-1; i >= 0; i--) {
+            for(int n = indices.length-1; n >= 0; n--) {
+                if(i == indices[n]) {
+                    myString = myString.replace(""+myString.charAt(i), "");
+                } 
+            }
+        }
+        answer = myString;
+        return answer;
+    }
+}
+
+import java.util.*;
+
+class Solution {
+    public String solution(String myString, int[] indices) {
+        Arrays.sort(indices);
+        String answer = myString;
+
+        
+        for(int i = 0; i <indices.length; i++) {
+            answer = answer.substring(0, indices[i]) + answer.substring(indices[i]+1, answer.length());
+        }
+        
+        return answer;
+    }
+}
+
+// 성공
+
+import java.util.*;
+
+class Solution {
+    public String solution(String my_string, int[] indices) {
+        Arrays.sort(indices);
+        
+        for(int i = 0; i < indices.length; i ++) my_string = my_string.substring(0, indices[i] - i) + my_string.substring(indices[i] - i + 1);
+        
+        return my_string;
+    }
+}
