@@ -1,3 +1,5 @@
+주어진 N 길이의 숫자열을 오름차순으로 정렬하여 출력하라.
+
 import java.util.Scanner;
 import java.io.FileInputStream;
 
