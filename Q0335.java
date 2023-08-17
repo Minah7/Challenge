@@ -6,15 +6,21 @@
 
 class Solution {
     public int[] solution(int[] arr) {
+        //배열이 1개일 때는 -1을 출력하므로 배열 개수 확인
         if(arr.length > 1) {
+            //최소값을 제외한 값들을 담으므로 arr배열개수 -1개로 설정
             int[] answer = new int[arr.length-1];
+            //최소값을 얻기 위해 최대값으로 초기화 설정
             int min = Integer.MAX_VALUE;
+            // 최소값을 찾기 위한 반복문
             for(int i = 0; i < arr.length; i++) {
                 if(min > arr[i]) {
                     min = arr[i];
                 }
             }
+            //최소값 제외한 arr배열의 값을 새 배열에 넣기 위한 반복문
             for(int i = 0, j = 0; i < arr.length; i++) {
+                //만약 최소값이면 continue로 넘어가기
                 if(arr[i] == min) continue;
                 answer[j++] = arr[i];
             }
