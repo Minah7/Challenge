@@ -41,7 +41,7 @@ public class Solution {
 			if(mulij.isEmpty()) {
 				answer = -1; //mulij가 비어있다면 단조를 확인할 수가 없으므로 -1출력
 			} else {
-				//mulij에 들어있는 수가 단조이면 새 배열에 담아주기
+				//mulij에 들어있는 수가 단조가 아니면 지우기
 				for(int i = mulij.size()-1; i >= 0; i--) {
 					String num = String.valueOf(mulij.get(i));
 					for(int d = 0; d < num.length()-1; d++) {
