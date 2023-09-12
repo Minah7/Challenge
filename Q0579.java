@@ -16,7 +16,7 @@ class Solution {
         while(answer < 500) {
             if(num%2 == 0) {
                 num /= 2;
-            } else {
+            } else if(num%2 == 1){
                 num = num*3+1;
             }
             answer++;
