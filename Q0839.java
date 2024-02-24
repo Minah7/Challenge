@@ -1,38 +1,45 @@
+// 문제링크: https://school.programmers.co.kr/learn/courses/30/lessons/1844
+
+// 게임 맵의 상태 maps가 매개변수로 주어질 때, 
+// 캐릭터가 상대 팀 진영에 도착하기 위해서 지나가야 하는 칸의 개수의 
+// 최솟값을 return 하도록 solution 함수를 완성해주세요. 
+// 단, 상대 팀 진영에 도착할 수 없을 때는 -1을 return 해주세요.
+
+// 성공
+
 import java.util.*;
 
 class Solution {
-    //동, 서, 남, 북 방향으로 이동
-    int[][] dir = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+    static int[][] dir = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
     
-    public int solution(int[][] maps) {
-        int answer = 0;
-        // 경로 값 넣을 배열
-        int[][] visited = new int[maps.length][maps[0].length];
-        visited[0][0] = 1; //시작하는 곳 경로 1로 만들어주기
+    public int solution(int[][] maps) {        
+        int n = maps.length;
+        int m = maps[0].length;
+        int[][] cnt = new int[n][m];
         
-        bfs(maps, visited);
-        answer = visited[maps.length-1][maps[0].length-1];
+        bfs(maps, cnt, n, m);
         
-        if(answer == 0) {
-            answer = -1;
+        if(cnt[n - 1][m - 1] == 0) {
+            return -1;
         }
-        
-        return answer;
+        return cnt[n - 1][m - 1];
     }
-    
-    public void bfs(int[][] maps, int[][] visited) {
-        Queue<Integer[]> queue = new LinkedList<>();
-        queue.add(new Integer[] {0, 0});
-        while(!queue.isEmpty()) {
-            Integer[] current = queue.poll();
-            int r = current[0];
-            int c = current[1];
-            for(int d = 0; d < 4; d++) {
-                int nr = r + dir[d][0];
-                int nc = c + dir[d][1];
-                if(0 <= nr && nr < maps.length && 0 <= nc && nc < maps[0].length && visited[nr][nc] == 0 && maps[nr][nc] == 1) {
-                    visited[nr][nc] = visited[r][c]+1;
-                    queue.add(new Integer[] {nr, nc});
+    static void bfs(int[][] maps, int[][] cnt, int n, int m) {
+        cnt[0][0] = 1;
+        
+        Queue<Integer[]> que = new LinkedList<>();
+        que.add(new Integer[] {0, 0});
+        
+        while(!que.isEmpty()) {
+            Integer[] get = que.poll();
+            int r = get[0];
+            int c = get[1];
+            for(int i = 0; i < 4; i++) {
+                int nr = r + dir[i][0];
+                int nc = c + dir[i][1];
+                if(0 <= nr && nr < n && 0 <= nc && nc < m && maps[nr][nc] == 1 && cnt[nr][nc] == 0) {
+                    cnt[nr][nc] = cnt[r][c] + 1;
+                    que.add(new Integer[] {nr, nc});
                 }
             }
         }
