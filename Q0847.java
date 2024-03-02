@@ -25,31 +25,28 @@ public class Solution {
 		int t = sc.nextInt();
 		for(int tc = 1; tc <= t; tc++) {
 			int n = sc.nextInt();
-			int[] height = new int[n];
 			int tower = sc.nextInt();
 			
 			min = 0;
+			int[] height = new int[n];
 			for(int i = 0; i < n; i++) {
 				height[i] = sc.nextInt();
 				min += height[i];
 			}
-			min++;
+			
 			dfs(height, n, tower, 0, 0);
 			System.out.println("#" + tc + " " + (min - tower));
 		}
 	}
 	
 	public static void dfs(int[] height, int n, int tower, int sum, int depth) {
-		if(sum > min) {
-			return;
-		}
 		if(sum >= tower) {
-			min = Math.min(min, sum);
+			min = Math.min(sum, min);
 			return;
 		}
 		if(depth == n) {
 			if(sum >= tower) {
-				min = Math.min(min, sum);
+				min = Math.min(sum, min);
 			}
 			return;
 		}
