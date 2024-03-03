@@ -1,17 +1,16 @@
 // 문제링크: https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5V1SYKAaUDFAWu
 
-// 실패
+// 실패. 23/50점 시간 초과.
 
 package APS;
 
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Scanner;
 import java.util.Set;
 
 public class Solution {
 	static int min;
-	static boolean check = false;
+	static boolean check;
 	static int d;
 	static int w;
 	static int k;
@@ -20,6 +19,7 @@ public class Solution {
 		Scanner sc = new Scanner(System.in);
 		int t = sc.nextInt();
 		for(int tc = 1; tc <= t; tc++) {
+			check = false;
 			d = sc.nextInt();
 			w = sc.nextInt();
 			k = sc.nextInt();
@@ -90,17 +90,22 @@ public class Solution {
 		out : for(int c = 0; c < w; c++) {
 			int a = 0;
 			int b = 0;
+			boolean pass = false;
 			for(int r = 0; r < d; r++) {
 				if(copy[r][c]) {
-					a++;
-					b = 0;
-				} else {
-					b++;
+					b += 1;
 					a = 0;
+				} else {
+					a += 1;
+					b = 0;
 				}
-				if(r == (d - 1) && a < k && b < k) {
-					break out;
+				if(a >= k || b >= k) {
+					pass = true;
+					continue;
 				}
+			}
+			if(!pass) {
+				break;
 			}
 			if(c == (w - 1)) {
 				check = true;
